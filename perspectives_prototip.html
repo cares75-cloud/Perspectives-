@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15243a">
+<title>Perspectives — demo</title>
+<style>
+:root{--ink:#17263d;--muted:#68758a;--paper:#f5f3ee;--card:#fff;--line:#e4e6e8;--accent:#b84c35;--blue:#dce8f2;--green:#e2eee6;--gold:#f5ecd4}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:var(--ink);color:#fff;padding:25px 18px 20px}.wrap{max-width:920px;margin:auto}header .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#c6d1de}h1{font-size:clamp(28px,6vw,42px);line-height:1.1;margin:8px 0}header p{margin:8px 0 0;color:#dbe2ea;max-width:600px}
+main{max-width:920px;margin:0 auto;padding:20px 16px 48px}.demo{font-size:12px;font-weight:700;letter-spacing:.04em;color:#78402c;background:#f6e3d9;padding:9px 12px;border-radius:10px;margin-bottom:16px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 12px}.topline h2{margin:0;font-size:22px}.time{font-size:13px;color:var(--muted)}
+.tabs,.filters{display:flex;gap:8px;overflow-x:auto;padding:3px 0 10px}.tabs button,.filters button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:9px 14px;white-space:nowrap;font-weight:650;cursor:pointer}.tabs button.active{background:var(--ink);color:white;border-color:var(--ink)}.filters button.active{background:var(--blue);border-color:#b5c8d9}
+.brief{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0;box-shadow:0 2px 9px #17263d08}.meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}.pill{font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;border-radius:5px;padding:4px 7px;background:#edf0f3}.pill.fact{background:var(--green)}.pill.analysis{background:var(--gold)}.brief h3{font-size:21px;line-height:1.25;margin:5px 0 9px}.brief p{margin:8px 0}.muted{color:var(--muted);font-size:14px}.key{border-left:3px solid var(--accent);padding-left:12px;margin:14px 0}
+details{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}summary{cursor:pointer;font-weight:750}details p{font-size:14px}
+.perspectives{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:12px}.view{border-radius:12px;padding:12px;background:#f4f6f8}.view h4{margin:0 0 6px;font-size:14px}.view p{font-size:14px;margin:0}.view.left{background:#f3e7e2}.view.right{background:#e7edf5}.view.other{background:#e7efe8}
+.footer{color:var(--muted);font-size:12px;margin-top:26px;border-top:1px solid var(--line);padding-top:15px}
+button:focus-visible,summary:focus-visible{outline:3px solid #bd6d55;outline-offset:2px}
+@media(max-width:520px){main{padding:16px 12px 36px}.brief{padding:15px}.brief h3{font-size:19px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Un resum · diverses mirades · fonts contrastables</div>
+<h1>Perspectives</h1>
+<p>Entén què passa sense haver de llegir-ho tot. Separa els fets, les interpretacions i allò que encara no sabem.</p>
+</div></header>
+<main>
+<div class="demo">PROTOTIP DE DEMOSTRACIÓ · Les notícies següents són exemples ficticis, no informació d'actualitat.</div>
+<div class="topline"><h2>El teu resum</h2><span class="time">Lectura estimada: 5 minuts</span></div>
+<div class="tabs" role="tablist" aria-label="Àmbit de notícies">
+<button class="active" data-region="Catalunya" role="tab" aria-selected="true">Catalunya</button>
+<button data-region="Espanya" role="tab" aria-selected="false">Espanya</button>
+<button data-region="Món" role="tab" aria-selected="false">Món</button>
+</div>
+<div class="filters" aria-label="Filtra per tema">
+<button class="active" data-topic="Tots">Tots els temes</button>
+<button data-topic="Política">Política</button><button data-topic="Economia">Economia</button><button data-topic="Societat">Societat</button>
+</div>
+<section id="stories" aria-live="polite"></section>
+<div class="footer">Com s'hauria de fer servir: cada notícia real hauria d'incloure enllaços a les fonts originals, data i hora de publicació, què està confirmat, què discuteixen les parts i quines dades falten. Aquest prototip no està connectat encara a fonts en directe.</div>
+</main>
+<script>
+const stories=[
+{region:"Catalunya",topic:"Política",time:"Exemple · 3 min",title:"El Parlament debat una nova proposta sobre habitatge",summary:"La proposta planteja canvis en les eines públiques per facilitar l'accés a l'habitatge. El debat se centra en l'eficàcia, el cost i els efectes sobre l'oferta.",fact:"Fet que caldria verificar: el text registrat, les mesures concretes i el calendari de tramitació.",views:[["Defensa de la proposta","Els partidaris poden argumentar que cal una intervenció pública més intensa per protegir l'accés a l'habitatge.","left"],["Crítica a la proposta","Els crítics poden advertir que algunes mesures poden reduir incentius a oferir habitatges o generar costos addicionals.","right"],["Què cal comprovar","Dades comparables, resultats d'altres polítiques, cost pressupostari i efectes diferenciats per territori.","other"]],unknown:"Sense el text oficial, les dades i les valoracions independents no es pot concloure quina opció tindria millors resultats."},
+{region:"Catalunya",topic:"Economia",time:"Exemple · 2 min",title:"El cost de la vida continua al centre del debat econòmic",summary:"Les famílies poden notar l'evolució dels preus de manera diferent segons els ingressos, el lloguer i els hàbits de consum.",fact:"Fet que caldria verificar: les últimes dades oficials d'inflació, salaris i despesa per tipus de llar.",views:[["Mirada de les llars","L'augment de despeses bàsiques pot reduir la renda disponible, sobretot en llars amb menys marge.","left"],["Mirada empresarial","Les empreses poden destacar costos laborals, energètics i de proveïdors, i la dificultat de traslladar-los als preus.","right"],["Mirada estadística","La mitjana general no explica tota l'experiència: cal comparar categories de preus i diferents nivells d'ingressos.","other"]],unknown:"Cal distingir la inflació acumulada, el nivell actual dels preus i l'evolució dels salaris reals."},
+{region:"Espanya",topic:"Política",time:"Exemple · 3 min",title:"Govern i oposició discrepen sobre una reforma pública",summary:"Les dues parts poden compartir el diagnòstic d'un problema però proposar instruments diferents per resoldre'l.",fact:"Fet que caldria verificar: el document de la reforma, les esmenes presentades i les votacions.",views:[["Argument del Govern","La reforma pot presentar-se com una manera d'assolir objectius socials o millorar serveis públics.","left"],["Argument de l'oposició","La crítica pot centrar-se en el cost, l'execució, els efectes no desitjats o la manca de consens.","right"],["Anàlisi independent","La comparació útil és entre objectius mesurables, costos, alternatives i resultats previsibles.","other"]],unknown:"Les declaracions polítiques no demostren per si soles ni l'eficàcia ni el fracàs d'una mesura."},
+{region:"Espanya",topic:"Societat",time:"Exemple · 2 min",title:"Una nova dada social obre un debat sobre desigualtat",summary:"Una xifra agregada pot amagar diferències importants per edat, territori, renda o situació familiar.",fact:"Fet que caldria verificar: la metodologia, la mostra, el període comparat i la font original.",views:[["Lectura social","La dada pot indicar que determinats grups necessiten més protecció o serveis.","left"],["Lectura de polítiques","Cal examinar si les mesures actuals arriben als grups afectats i amb quin cost.","right"],["Lectura de dades","Les tendències s'han de comparar amb sèries temporals i definicions consistents.","other"]],unknown:"Una correlació no demostra automàticament que una política concreta sigui la causa del canvi."},
+{region:"Món",topic:"Política",time:"Exemple · 4 min",title:"Una crisi diplomàtica posa a prova les aliances internacionals",summary:"Els governs poden descriure un mateix esdeveniment de maneres oposades, perquè prioritzen seguretat, sobirania, interessos econòmics o aliances.",fact:"Fet que caldria verificar: comunicats oficials, cronologia, documents i confirmacions independents.",views:[["Posició d'una part","Cal presentar els seus arguments com a declaracions atribuïdes, no com a fets demostrats.","left"],["Posició de l'altra part","La mateixa exigència: atribuir afirmacions, identificar interessos i buscar evidència verificable.","right"],["Context internacional","Analitzar el dret aplicable, els actors afectats, els antecedents i les conseqüències possibles.","other"]],unknown:"En una crisi activa, la informació inicial pot ser incompleta o interessada; les conclusions han de reflectir aquest marge d'incertesa."},
+{region:"Món",topic:"Economia",time:"Exemple · 3 min",title:"Els mercats reaccionen davant la incertesa econòmica",summary:"Els moviments dels mercats poden reflectir expectatives sobre tipus d'interès, creixement, beneficis o riscos geopolítics.",fact:"Fet que caldria verificar: dades de mercat amb data i hora, i les comunicacions dels bancs centrals.",views:[["Empreses i inversors","La incertesa pot ajornar decisions d'inversió o canviar les expectatives de beneficis.","left"],["Treballadors i consumidors","Els efectes arriben de manera desigual a l'ocupació, els préstecs, els estalvis i els preus.","right"],["Mirada macroeconòmica","Un moviment d'un sol dia no és suficient per demostrar un canvi estructural.","other"]],unknown:"No es pot atribuir una variació a una sola causa sense analitzar altres factors i el període temporal."}
+];
+let region="Catalunya",topic="Tots";
+function render(){const root=document.getElementById("stories");const items=stories.filter(s=>s.region===region&&(topic==="Tots"||s.topic===topic));root.innerHTML=items.map((s,i)=>`<article class="brief"><div class="meta"><span class="pill">${s.region}</span><span class="pill">${s.topic}</span><span class="pill">${s.time}</span></div><h3>${s.title}</h3><p>${s.summary}</p><div class="key"><strong>Què sabem?</strong><p>${s.fact}</p></div><details><summary>Comparar les perspectives</summary><div class="perspectives">${s.views.map(v=>`<div class="view ${v[2]}"><h4>${v[0]}</h4><p>${v[1]}</p></div>`).join("")}</div><p><strong>Què encara no sabem?</strong> ${s.unknown}</p><p class="muted">En la versió real: fonts originals, enllaços, dates, comprovacions i punts de desacord documentats.</p></details></article>`).join("")||'<p>No hi ha exemples per a aquest filtre.</p>'}
+document.querySelectorAll("[data-region]").forEach(b=>b.addEventListener("click",()=>{region=b.dataset.region;document.querySelectorAll("[data-region]").forEach(x=>{x.classList.toggle("active",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});render()}));
+document.querySelectorAll("[data-topic]").forEach(b=>b.addEventListener("click",()=>{topic=b.dataset.topic;document.querySelectorAll("[data-topic]").forEach(x=>x.classList.toggle("active",x===b));render()}));
+render();
+</script>
+</body></html>

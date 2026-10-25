@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#142d4e"><meta name="description" content="Perspectives: notícies i context per entendre què passa a Catalunya i al món.">
+  <title>Perspectives — notícies amb context</title>
+  <link rel="manifest" href="/static/manifest.webmanifest"><link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">P.</span><div><strong>Perspectives</strong><small>Notícies amb context</small></div></div><button id="refresh" class="refresh" aria-label="Actualitzar notícies">↻ <span>Actualitzar</span></button></header>
+<main>
+  <section class="intro"><p class="eyebrow">INFORMACIÓ, NO SOROLL</p><h1>Entendre què passa.<br><em>Amb més d'una perspectiva.</em></h1><p class="intro-copy">Titulars de diverses fonts, agrupats i ordenats per ajudar-te a seguir els temes importants.</p></section>
+  <nav class="tabs" aria-label="Seccions"><button class="tab active" data-view="news">Notícies <span id="news-count" class="count">—</span></button><button class="tab" data-view="briefing">Resum diari</button><button class="tab" data-view="sources">Fonts</button></nav>
+  <section class="controls"><div class="periods" aria-label="Període"><button class="period active" data-period="24h">24 h</button><button class="period" data-period="72h">72 h</button><button class="period" data-period="7d">7 dies</button></div><label class="select-wrap"><span class="sr-only">Filtra per secció</span><select id="category"><option>Totes</option><option>Catalunya</option><option>Espanya i món</option><option>Món</option></select></label></section>
+  <div id="status" class="status" role="status">Carregant notícies…</div>
+  <section id="news-view" class="view"><div id="news-list" class="news-list"></div></section>
+  <section id="briefing-view" class="view hidden"><article class="briefing-card"><div class="briefing-head"><div><p class="eyebrow">BRIEFING</p><h2>El resum del dia</h2></div><span id="briefing-mode" class="mode">Preparant</span></div><p class="disclaimer">Separar fets, afirmacions i incerteses és essencial. Aquest resum es basa en els canals disponibles; no substitueix la verificació de les fonts originals.</p><div id="briefing-content" class="briefing-content">Preparant el resum…</div></article></section>
+  <section id="sources-view" class="view hidden"><article class="briefing-card"><h2>Fonts consultades</h2><p>La selecció combina mitjans i canals institucionals. La presència d'una notícia aquí no implica que n'hàgim verificat independentment el contingut.</p><ul class="sources-list"><li><strong>3Cat</strong><span>Actualitat de Catalunya</span></li><li><strong>Govern de la Generalitat</strong><span>Comunicats institucionals</span></li><li><strong>BBC News</strong><span>Informació internacional</span></li><li><strong>The Guardian</strong><span>Informació internacional</span></li><li><strong>Reuters, via Google News</strong><span>Agència de notícies</span></li><li><strong>Associated Press, via Google News</strong><span>Agència de notícies</span></li></ul><p class="small-note">Els canals RSS poden fallar, canviar de format o no incloure totes les notícies. Si una notícia és important, obre l'original i contrasta-la.</p></article></section>
+  <footer><p>Perspectives · Projecte informatiu independent</p><p>Els titulars i extractes pertanyen a les fonts originals.</p></footer>
+</main>
+<script src="/static/app.js" defer></script>
+</body></html>
